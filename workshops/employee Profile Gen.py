@@ -38,3 +38,7 @@ year_code = employee_code[4:8]
 initials = employee_code[9:11]
 print(year_code)
 print(initials)
+
+
+last_three = employee_code[-3:]  # print last three indexes
+print(last_three)
