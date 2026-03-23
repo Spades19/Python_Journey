@@ -6,14 +6,14 @@ def create_character(name, strength, intelligence, charisma):
     # 1. Name Validation
     if not isinstance(name, str):
         return 'The character name should be a string'
-    if name.strip() == '':  # .strip() handles empty strings and just spaces
+    if name == '':  # Changed: Match the exact "empty" requirement
         return 'The character should have a name'
     if ' ' in name:
         return 'The character name should not contain spaces'
-    if len(name) > 9:  # Check if length is greater than 9
+    if len(name) > 10:  # Changed: Only too long if GREATER than 10
         return 'The character name is too long'
 
-    # 2. Stat Validation (Grouping them for easy checking)
+    # 2. Stat Validation
     all_stats = (strength, intelligence, charisma)
 
     for stat in all_stats:
@@ -27,19 +27,16 @@ def create_character(name, strength, intelligence, charisma):
     if sum(all_stats) != 7:
         return 'The character should start with 7 points'
 
-   # 3. Success! Create the "Dots" representation
-    # We multiply the dot characters by the numbers directly
+    # 3. Create the 4-line string output
     str_dots = (full_dot * strength) + (empty_dot * (10 - strength))
     int_dots = (full_dot * intelligence) + (empty_dot * (10 - intelligence))
     cha_dots = (full_dot * charisma) + (empty_dot * (10 - charisma))
 
-    # The lab specifically asked for a string with four lines, not a dictionary!
     return f"{name}\nSTR {str_dots}\nINT {int_dots}\nCHA {cha_dots}"
 
 
-# Testing it out
-print(create_character("Uriel", 2, 3, 2))
-
+# Test it
+print(create_character('ren', 4, 2, 1))
 
 # L3
 # full_dot = '●'
